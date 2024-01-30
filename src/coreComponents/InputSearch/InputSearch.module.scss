@@ -1,0 +1,35 @@
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #eeeeee;
+  width: 80%;
+  input {
+    height: 3em;
+    border: 0;
+    width: 95%;
+    padding: 0em 1em;
+    font-size: 18px;
+    color: #999999;
+  }
+
+  input[type="text"]::placeholder {
+    font-size: 18px;
+    color: #999999;
+  }
+
+  input[type="text"]:focus {
+    box-shadow: 0 0 3px 0 #999999;
+    border-color: #999999;
+    outline: none;
+  }
+
+  button {
+    background-color: #eeeeee;
+    border: 0px;
+    width: 5%;
+    height: 100%;
+    cursor: pointer;
+    padding: 1.2em 0em;
+  }
+}

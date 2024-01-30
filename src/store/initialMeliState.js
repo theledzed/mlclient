@@ -1,0 +1,3 @@
+const initialMeliState = {
+  query: null,
+};
