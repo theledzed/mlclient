@@ -1,9 +1,7 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
-import { setState } from "@/store/actions";
+import { useContext } from "react";
 import MeliContext from "@/store/meliContext";
 import ProductCard from "@/coreComponents/ProductCard";
-import styles from "./item.module.scss";
 
 export default function Items() {
   const [state, dispatch] = useContext(MeliContext);
