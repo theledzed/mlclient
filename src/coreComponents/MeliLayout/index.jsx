@@ -78,7 +78,12 @@ export default function MeliLayout({ children }) {
                     categories.map((category, index) => {
                       return (
                         <>
-                          <span key={category}>{index !== 0 && " > "}</span>
+                          <span
+                            className={styles.breadSeparator}
+                            key={category}
+                          >
+                            {index !== 0 && " > "}
+                          </span>
                           <span className={styles.breadcrumbs} key={category}>
                             {category}
                           </span>
