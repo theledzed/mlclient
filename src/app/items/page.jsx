@@ -4,7 +4,7 @@ import MeliContext from "@/store/meliContext";
 import ProductCard from "@/coreComponents/ProductCard";
 
 export default function Items() {
-  const [state, dispatch] = useContext(MeliContext);
+  const [state] = useContext(MeliContext);
 
   const { productList = [] } = state;
 

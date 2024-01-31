@@ -1,14 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import MeliContext from "@/store/meliContext";
 import styles from "./productCard.module.scss";
 import Image from "next/image";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
-  const [state, dispatch] = useContext(MeliContext);
-  const { picture, price, free_shipping, title } = product;
+  const { picture, price, free_shipping, title, address } = product;
   const { amount, currency, decimals } = price;
 
   const priceFormated = amount.toLocaleString("es-ar", {
@@ -38,7 +34,7 @@ export default function ProductCard({ product }) {
                 />
               )}
             </div>
-            <span className={styles.address}>Capital Federal</span>
+            <span className={styles.address}>{address}</span>
           </div>
           <span className={styles.title}>{title}</span>
         </div>

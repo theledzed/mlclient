@@ -1,5 +1,5 @@
-import MeliLayout from "@/coreComponents/MeliLayout";
 import { Inter } from "next/font/google";
+import MeliLayout from "@/coreComponents/MeliLayout";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
