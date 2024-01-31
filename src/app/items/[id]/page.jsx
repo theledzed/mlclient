@@ -13,21 +13,15 @@ export default function Items() {
   const searchParams = useSearchParams();
 
   const available_quantity = searchParams.get("quantity");
-  const { productDetail, isLoading } = state;
+  const { productDetail } = state;
 
   useEffect(() => {
-    if (!productDetail) {
-      getProductDetail();
-    }
-  }, [productDetail]);
+    getProductDetail();
+  }, []);
 
   const getProductDetail = async () => {
     try {
-      dispatch(
-        setState({
-          isLoading: true,
-        })
-      );
+      console.log("id", id);
       const response = await axios.get(
         `https://mlapi-seven.vercel.app/api/items/${id}?quantity=${available_quantity}`
       );
@@ -38,11 +32,6 @@ export default function Items() {
           })
         );
       }
-      dispatch(
-        setState({
-          isLoading: false,
-        })
-      );
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +47,6 @@ export default function Items() {
   );
 
   return (
-    !isLoading &&
     productDetail && (
       <main className={styles.detailContainer}>
         <div className={styles.row}>

@@ -1,3 +1,3 @@
 export const copies = {
-  neverStopSearch: "Nunca, dejes de buscar",
+  neverStopSearch: "Nunca dejes de buscar",
 };
