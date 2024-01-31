@@ -23,14 +23,28 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     width: 100%;
     height: 95dvh;
     background-color: #eeeeee;
-    .bodyContainer {
+    .childrenContainer {
       width: 60%;
-      height: 85dvh;
-      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      .breadcrumbsContainer {
+        margin-top: 16px;
+        .breadcrumbs {
+          font-size: 14px;
+          color: #666666;
+        }
+        .breadcrumbs:last-child {
+          font-weight: bold;
+        }
+      }
+      .bodyContainer {
+        margin-top: 16px;
+        height: fit-content;
+        background-color: #ffffff;
+      }
     }
   }
 }

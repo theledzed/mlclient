@@ -12,6 +12,8 @@ export default function MeliLayout({ children }) {
   const [hiddenChildren, setIHiddenChildren] = useState(true);
   const [state, dispatch] = useContext(MeliContext);
 
+  const { categories = [] } = state;
+
   useEffect(() => {
     if (pathName === "/") {
       setIHiddenChildren(true);
@@ -37,7 +39,19 @@ export default function MeliLayout({ children }) {
       </header>
       <section className={styles.sectionContainer}>
         {!hiddenChildren && (
-          <div className={styles.bodyContainer}>{children}</div>
+          <div className={styles.childrenContainer}>
+            <div className={styles.breadcrumbsContainer}>
+              {categories.length > 0 &&
+                categories.map((category, index) => {
+                  return (
+                    <span className={styles.breadcrumbs} key={category}>
+                      {index !== 0 && " >"} {category}
+                    </span>
+                  );
+                })}
+            </div>
+            <div className={styles.bodyContainer}>{children}</div>
+          </div>
         )}
       </section>
     </div>
