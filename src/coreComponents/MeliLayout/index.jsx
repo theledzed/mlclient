@@ -1,14 +1,15 @@
 "use client";
-import { useContext, useEffect, useState, useReducer } from "react";
-import Image from "next/image";
-import { setState } from "@/store/actions";
+import { useEffect, useState, useReducer } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import MeliContext from "@/store/meliContext";
-import meliReducer from "@/store/meliReducer";
-import initialMeliState from "@/store/initialMeliState";
-import InputSearch from "@/coreComponents/InputSearch";
-import styles from "./meliLayout.module.scss";
+import { copies } from "./utils";
+import { setState } from "@/store/actions";
 import { Suspense } from "react";
+import initialMeliState from "@/store/initialMeliState";
+import Image from "next/image";
+import InputSearch from "@/coreComponents/InputSearch";
+import meliReducer from "@/store/meliReducer";
+import MeliContext from "@/store/meliContext";
+import styles from "./meliLayout.module.scss";
 
 export default function MeliLayout({ children }) {
   const router = useRouter();
@@ -76,14 +77,16 @@ export default function MeliLayout({ children }) {
                   {categories.length > 0 &&
                     categories.map((category, index) => {
                       return (
-                        <span className={styles.breadcrumbs} key={category}>
-                          {index !== 0 && " >"} {category}
-                        </span>
+                        <>
+                          <span key={category}>{index !== 0 && " > "}</span>
+                          <span className={styles.breadcrumbs} key={category}>
+                            {category}
+                          </span>
+                        </>
                       );
                     })}
                 </div>
                 <div className={styles.bodyContainer}>
-                  {" "}
                   <Suspense>{children}</Suspense>
                 </div>
               </div>
@@ -97,11 +100,9 @@ export default function MeliLayout({ children }) {
                   height={150}
                   priority
                 />
-                <span className={styles.emptyTitle}>
-                  ¡Parece que no has empezado a buscar!
-                </span>
+                <span className={styles.emptyTitle}>{copies.startSearch}</span>
                 <span className={styles.emptyDescription}>
-                  Empieza ahora y encuentra todo lo que necesitas
+                  {copies.startSearchFind}
                 </span>
               </div>
             )}

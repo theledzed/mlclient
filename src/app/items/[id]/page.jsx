@@ -1,20 +1,20 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect } from "react";
-import { setState } from "@/store/actions";
 import { useParams, useSearchParams } from "next/navigation";
+import { setState } from "@/store/actions";
+import { copies } from "./utils";
 import axios from "axios";
 import MeliContext from "@/store/meliContext";
-import { copies } from "./utils";
 import styles from "./itemDetail.module.scss";
 
 export default function Items() {
   const [state, dispatch] = useContext(MeliContext);
   const { id } = useParams();
   const searchParams = useSearchParams();
-  const available_quantity = searchParams.get("quantity");
 
+  const available_quantity = searchParams.get("quantity");
   const { productDetail, isLoading } = state;
+
   useEffect(() => {
     if (!productDetail) {
       getProductDetail();

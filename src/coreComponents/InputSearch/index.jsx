@@ -1,12 +1,12 @@
 "use client";
-import { useContext, useEffect } from "react";
-import Image from "next/image";
-import { setState } from "@/store/actions";
-import MeliContext from "@/store/meliContext";
-import axios from "axios";
-import styles from "./InputSearch.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useContext, useEffect } from "react";
+import { setState } from "@/store/actions";
 import { copies } from "./utils";
+import axios from "axios";
+import Image from "next/image";
+import MeliContext from "@/store/meliContext";
+import styles from "./InputSearch.module.scss";
 
 export default function InputSearch({ isHydrate }) {
   const searchParams = useSearchParams();
