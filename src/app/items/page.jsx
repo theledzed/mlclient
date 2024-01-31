@@ -1,5 +1,6 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
+import { setState } from "@/store/actions";
 import MeliContext from "@/store/meliContext";
 import ProductCard from "@/coreComponents/ProductCard";
 import styles from "./item.module.scss";
