@@ -49,3 +49,46 @@
     }
   }
 }
+
+@media (max-width: 1350px) {
+  .detailContainer {
+    .row {
+      flex-direction: column;
+      align-items: center;
+      .productImg {
+        margin-top: 2em;
+        width: 90%;
+      }
+      .buybox {
+        width: 100%;
+        align-items: center;
+        .condition {
+          margin-top: 1em;
+        }
+        .title {
+          width: 100%;
+          padding: 0em 2em;
+          text-align: center;
+        }
+        .price {
+          font-size: 38px;
+        }
+        .button {
+          margin: 2em;
+          width: 80%;
+        }
+      }
+    }
+    .description {
+      display: flex;
+      flex-direction: column;
+      padding: 2em;
+      .descriptionTitle {
+        font-size: 25px;
+      }
+      .descriptionText {
+        width: 100%;
+      }
+    }
+  }
+}

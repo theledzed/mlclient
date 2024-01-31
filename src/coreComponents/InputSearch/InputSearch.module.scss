@@ -32,3 +32,19 @@
     padding: 11px 0em;
   }
 }
+
+@media (max-width: 800px) {
+  .inputContainer {
+    input {
+      width: 85%;
+      font-size: 15px;
+    }
+    button {
+      width: 15%;
+    }
+    input[type="text"]::placeholder {
+      font-size: 15px;
+      color: #999999;
+    }
+  }
+}
