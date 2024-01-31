@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
-  const { picture, price, free_shipping, title, address } = product;
+  const { picture, price, free_shipping, title, seller_name } = product;
   const { amount, currency, decimals } = price;
 
   const priceFormated = amount.toLocaleString("es-ar", {
@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
                 />
               )}
             </div>
-            <span className={styles.address}>{address}</span>
+            <span className={styles.address}>{seller_name}</span>
           </div>
           <span className={styles.title}>{title}</span>
         </div>
