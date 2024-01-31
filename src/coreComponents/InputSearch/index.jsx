@@ -5,9 +5,12 @@ import { setState } from "@/store/actions";
 import MeliContext from "@/store/meliContext";
 import axios from "axios";
 import styles from "./InputSearch.module.scss";
+import { usePathname, useRouter } from "next/navigation";
 import { copies } from "./utils";
 
 export default function InputSearch() {
+  const router = useRouter();
+  const pathName = usePathname();
   const [state, dispatch] = useContext(MeliContext);
 
   const { query } = state;
@@ -25,9 +28,11 @@ export default function InputSearch() {
           setState({
             productList: response.data.items,
             categories: response.data.categories,
-            isRedirectToProductList: true,
           })
         );
+        if (pathName === "/") {
+          router.push(`/items?search=${query}`);
+        }
       }
     } catch (error) {
       console.log(error);
