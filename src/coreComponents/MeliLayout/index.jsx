@@ -8,6 +8,7 @@ import meliReducer from "@/store/meliReducer";
 import initialMeliState from "@/store/initialMeliState";
 import InputSearch from "@/coreComponents/InputSearch";
 import styles from "./meliLayout.module.scss";
+import { Suspense } from "react";
 
 export default function MeliLayout({ children }) {
   const router = useRouter();
@@ -58,7 +59,9 @@ export default function MeliLayout({ children }) {
                 gotoHome();
               }}
             />
-            <InputSearch isHydrate={isHydrate} />
+            <Suspense>
+              <InputSearch isHydrate={isHydrate} />
+            </Suspense>
           </div>
         </header>
         {isLoading ? (
@@ -79,7 +82,10 @@ export default function MeliLayout({ children }) {
                       );
                     })}
                 </div>
-                <div className={styles.bodyContainer}>{children}</div>
+                <div className={styles.bodyContainer}>
+                  {" "}
+                  <Suspense>{children}</Suspense>
+                </div>
               </div>
             ) : (
               <div className={styles.emptyState}>
