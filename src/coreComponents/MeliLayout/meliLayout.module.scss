@@ -44,6 +44,31 @@
         margin-top: 16px;
         height: fit-content;
         background-color: #ffffff;
+        overflow: auto;
+        margin-bottom: 2em;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .layoutContainer {
+    .layoutHead {
+      height: 10dvh;
+      .searchContainer {
+        width: 100%;
+        margin: 0.5em 1em;
+        .mlLogo {
+          margin-right: 1em;
+          width: 50px;
+          height: 35;
+        }
+      }
+    }
+    .sectionContainer {
+      height: 90dvh;
+      .childrenContainer {
+        width: 90%;
       }
     }
   }
