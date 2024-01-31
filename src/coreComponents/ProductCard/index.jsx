@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { setState } from "@/store/actions";
 import { usePathname, useRouter } from "next/navigation";
 import MeliContext from "@/store/meliContext";
