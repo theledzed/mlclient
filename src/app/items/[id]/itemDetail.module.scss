@@ -1,0 +1,51 @@
+.detailContainer {
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .productImg {
+      width: 680px;
+    }
+    .buybox {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      .condition {
+        margin-top: 32px;
+        font-size: 14px;
+      }
+      .title {
+        margin: 16px 0px 32px 0px;
+        font-size: 24px;
+        font-weight: 500;
+        width: 70%;
+      }
+      .price {
+        font-size: 46px;
+      }
+      .button {
+        border: 0px;
+        padding: 1em;
+        margin: 32px 32px 0px 0px;
+        font-size: 18px;
+        color: #ffffff;
+        background-color: #3483fa;
+        border-radius: 4px;
+      }
+    }
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    .descriptionTitle {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+    .descriptionText {
+      width: 70%;
+      font-size: 16px;
+      color: #999999;
+    }
+  }
+}
