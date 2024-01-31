@@ -1,14 +1,16 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Image from "next/image";
 import { setState } from "@/store/actions";
 import MeliContext from "@/store/meliContext";
 import axios from "axios";
 import styles from "./InputSearch.module.scss";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { copies } from "./utils";
 
-export default function InputSearch() {
+export default function InputSearch({ isHydrate }) {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search");
   const router = useRouter();
   const pathName = usePathname();
   const [state, dispatch] = useContext(MeliContext);
@@ -17,11 +19,19 @@ export default function InputSearch() {
 
   const limit = 4;
   const EventCodeEnter = "Enter";
+  const productsResultPath = `/items?search=${query ?? search}`;
 
   const searchProducts = async () => {
     try {
+      dispatch(
+        setState({
+          isLoading: true,
+        })
+      );
       const response = await axios.get(
-        `https://mlapi-seven.vercel.app/api/items?q=${query}&limit=${limit}`
+        `https://mlapi-seven.vercel.app/api/items?q=${
+          query ?? search
+        }&limit=${limit}`
       );
       if (response.data) {
         dispatch(
@@ -30,14 +40,25 @@ export default function InputSearch() {
             categories: response.data.categories,
           })
         );
-        if (pathName === "/") {
-          router.push(`/items?search=${query}`);
+        if (pathName !== productsResultPath) {
+          router.push(productsResultPath);
         }
       }
+      dispatch(
+        setState({
+          isLoading: false,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (isHydrate) {
+      searchProducts();
+    }
+  }, [isHydrate]);
 
   return (
     <div className={styles.inputContainer}>
