@@ -18,37 +18,40 @@ export default function InputSearch({ isHydrate }) {
   const { query } = state;
 
   const limit = 4;
-  const EventCodeEnter = "Enter";
+  const EventCodeEnter = 13;
   const productsResultPath = `/items?search=${query ?? search}`;
 
   const searchProducts = async () => {
     try {
-      dispatch(
-        setState({
-          isLoading: true,
-        })
-      );
-      const response = await axios.get(
-        `https://mlapi-seven.vercel.app/api/items?q=${
-          query ?? search
-        }&limit=${limit}`
-      );
-      if (response.data) {
+      console.log();
+      if (query && query !== "") {
         dispatch(
           setState({
-            productList: response.data.items,
-            categories: response.data.categories,
+            isLoading: true,
           })
         );
-        if (pathName !== productsResultPath) {
-          router.push(productsResultPath);
+        const response = await axios.get(
+          `https://mlapi-seven.vercel.app/api/items?q=${
+            query ?? search
+          }&limit=${limit}`
+        );
+        if (response.data) {
+          dispatch(
+            setState({
+              productList: response.data.items,
+              categories: response.data.categories,
+            })
+          );
+          if (pathName !== productsResultPath) {
+            router.push(productsResultPath);
+          }
         }
+        dispatch(
+          setState({
+            isLoading: false,
+          })
+        );
       }
-      dispatch(
-        setState({
-          isLoading: false,
-        })
-      );
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +75,7 @@ export default function InputSearch({ isHydrate }) {
           );
         }}
         onKeyDown={(event) => {
-          if (event.code === EventCodeEnter) {
+          if (event.keyCode === EventCodeEnter) {
             searchProducts();
           }
         }}
