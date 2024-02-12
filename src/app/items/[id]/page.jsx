@@ -21,7 +21,6 @@ export default function Items() {
 
   const getProductDetail = async () => {
     try {
-      console.log("id", id);
       const response = await axios.get(
         `https://mlapi-seven.vercel.app/api/items/${id}?quantity=${available_quantity}`
       );

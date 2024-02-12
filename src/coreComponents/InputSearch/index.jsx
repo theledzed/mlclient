@@ -23,7 +23,6 @@ export default function InputSearch({ isHydrate }) {
 
   const searchProducts = async () => {
     try {
-      console.log();
       if (query && query !== "") {
         dispatch(
           setState({
